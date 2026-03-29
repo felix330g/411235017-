@@ -1,0 +1,25 @@
+class Solution {
+public:
+    std::vector<int> twoSum(std::vector<int>& numbers, int target) {
+        int left = 0;
+        int right = numbers.size() - 1;
+
+        while (left < right) {
+            int currentSum = numbers[left] + numbers[right];
+
+            if (currentSum == target) {
+                // 題目要求回傳從 1 開始的索引 (1-indexed)
+                return {left + 1, right + 1};
+            } else if (currentSum < target) {
+                // 和太小，左指標右移以增加總和
+                left++;
+            } else {
+                // 和太大，右指標左移以減少總和
+                right--;
+            }
+        }
+        
+        // 根據題目保證一定有解，這行理論上不會執行到
+        return {};
+    }
+};
